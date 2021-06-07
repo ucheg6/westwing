@@ -7,25 +7,22 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
-    get inputUsername () { return $('#username') }
-    get inputPassword () { return $('#password') }
-    get btnSubmit () { return $('button[type="submit"]') }
+    get wishListIcon() { return $('//*[@id="app-root"]/div/div[1]/div[6]/div/div/main/div/div[2]/div[1]/a/div/div[2]/div[2]/div') }
+    get modalOverlay() { return $('//*[@id="app-root"]/div/div[2]/div/div[1]') }
+    get loginPageModal() { return $('//*[@id="app-root"]/div/div[2]/div/div[1]/div/div[2]/div[2]/p[1]') }
+    get modalOverlay() { return $('//*[@id="app-root"]/div/div[2]/div/div[1]') }
 
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await (await this.inputUsername).setValue(username);
-        await (await this.inputPassword).setValue(password);
-        await (await this.btnSubmit).click();
+
+
+    async clickWishListIcon() {
+        await (await this.wishListIcon).click();    
     }
 
-    /**
-     * overwrite specifc options to adapt it to page object
-     */
-    open () {
-        return super.open('login');
+
+    async checkLoginModal() {
+        await (await this.loginPageModal).waitForExist({ timeout: 5000 });
+        const a = await (await this.loginPageModal).getText();
+        expect(a).toHaveTextContaining('123444')
     }
 }
 
