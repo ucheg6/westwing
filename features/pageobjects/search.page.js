@@ -30,7 +30,7 @@ class SearchPage extends Page {
         await (await this.modalOverlay).waitForExist({ timeout: 5000 });
         await (await this.modalOverlay).click();
         await (await this.productListPage).waitForExist({ timeout: 5000 });
-        const a = await (await this.productListPage).getText();
+        const a = await (await this.productListPage);
         expect(a).toHaveTextContaining('Produkte')
     }
 }

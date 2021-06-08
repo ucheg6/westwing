@@ -48,7 +48,7 @@ class LoginPage extends Page {
           }, elem);
 
         await (await this.productListPage).waitForExist({ timeout: 5000 });
-        const a = await (await this.productListPage).getText();
+        const a = await (await this.productListPage);
         expect(a).toHaveTextContaining('Produkte')
         await browser.pause(5000)
     }
