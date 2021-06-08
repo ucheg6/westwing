@@ -15,6 +15,9 @@ Westwing Technical QA test
    npm install
 ```
 3. Run test script
+
+*To disable headless so you can see the browser automations comment out goog:chromeOptions at wdio.conf.js*
+*It was enabled so Docker can run the chromedriver on headless mode*
 ```
    npx wdio run ./wdio.conf.js
 ```
