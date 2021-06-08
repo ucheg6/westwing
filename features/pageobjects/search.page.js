@@ -16,8 +16,8 @@ class SearchPage extends Page {
     get productListPage() { return $('//*[@id="app-root"]/div/div[1]/div[6]/div/div/main/header/div[1]/div/div') }
 
 
-    open() {
-        return super.open();
+    open(url) {
+        return super.open(url);
     }
 
     async enterSearchTerm(searchTerm) {
@@ -27,11 +27,11 @@ class SearchPage extends Page {
     }
 
     async searchResults() {
-        await (await this.modalOverlay).waitForExist({ timeout: 9000 });
+        await (await this.modalOverlay).waitForExist({ timeout: 5000 });
         await (await this.modalOverlay).click();
-        await (await this.productListPage).waitForExist({ timeout: 90000 });
+        await (await this.productListPage).waitForExist({ timeout: 5000 });
         const a = await (await this.productListPage).getText();
-        expect(a).toEqual('2462 Produkte')
+        expect(a).toHaveTextContaining('Produkte')
     }
 }
 
