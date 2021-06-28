@@ -1,5 +1,5 @@
 # Westwing
-Westwing Technical QA test
+Test setup for Westwing
 
 # How To Run
 1. Clone this repo: 
